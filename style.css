@@ -5,7 +5,7 @@
   --card: #1e1e1e;
   --input-bg: #2a2a2a;
   --border: #444;
-  --footer: #000000;
+  --footer: #222;
 }
 body.light {
   --bg: #f8f8f8;
@@ -22,6 +22,11 @@ body {
   background: var(--bg);
   color: var(--text);
   transition: background 0.3s, color 0.3s;
+
+  /* AJOUT pour enlever l’espace sous le footer */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 header {
   background: var(--card);
@@ -59,6 +64,7 @@ header p {
   padding: 2rem 1rem;
   max-width: 1000px;
   margin: auto;
+  flex-grow: 1; /* AJOUT pour pousser le footer vers le bas */
 }
 .products-wrapper {
   position: relative;
@@ -132,6 +138,7 @@ header p {
   box-shadow: 0 0 10px rgba(255,255,255,0.05);
   margin-bottom: 2rem;
 }
+
 footer {
   background-color: var(--footer);
   color: white;
@@ -139,6 +146,9 @@ footer {
   padding: 1rem;
   margin-top: 2rem;
   font-weight: 600;
+
+  /* AJOUT pour que footer reste en bas */
+  flex-shrink: 0;
 }
 .contact {
   display: flex;
