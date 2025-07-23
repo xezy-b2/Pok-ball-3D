@@ -11,12 +11,19 @@
 </head>
 <body>
   <header>
-<h1>
+<h1 style="flex: flex; align-items: center; gap: 8px;">
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+    <!-- Cercle extérieur -->
     <circle cx="32" cy="32" r="30" fill="#fff" stroke="#000" stroke-width="4"/>
-    <circle cx="32" cy="32" r="14" fill="#fff" stroke="#000" stroke-width="4"/>
+    <!-- Ligne centrale (noire) -->
     <path d="M2 32h60" stroke="#000" stroke-width="4"/>
+    <!-- Demi-haut rouge -->
+    <path d="M2 32 A30 30 0 0 1 62 32 L62 32 L2 32 Z" fill="#ff3b3f" stroke="none"/>
+    <!-- Cercle intérieur grand blanc -->
+    <circle cx="32" cy="32" r="14" fill="#fff" stroke="#000" stroke-width="4"/>
+    <!-- Cercle intérieur rouge -->
     <circle cx="32" cy="32" r="10" fill="#ff3b3f" stroke="#000" stroke-width="4"/>
+    <!-- Petit cercle blanc central -->
     <circle cx="32" cy="32" r="6" fill="#fff" stroke="#000" stroke-width="4"/>
   </svg>
   PokéBalls 3D
