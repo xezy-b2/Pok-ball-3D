@@ -129,7 +129,7 @@ header p {
 }
 footer {
   background: var(--footer);
-  color: #888;
+  color: #000;
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
