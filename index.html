@@ -8,14 +8,15 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <button class="theme-toggle" onclick="document.body.classList.toggle('light')">Changer de thème</button>
+  <!-- Bouton unique pour changer le thème -->
+  <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
+
   <header>
     <h1>PokéBalls 3D</h1>
-     <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
-<nav>
-  <a href="index.html" class="active">Accueil</a> |
-  <a href="About.html">À propos</a>
-</nav>
+    <nav>
+      <a href="index.html" class="active">Accueil</a> |
+      <a href="About.html">À propos</a>
+    </nav>
     <p>Collectionne-les toutes... en version imprimée 3D !</p>
   </header>
 
@@ -61,7 +62,7 @@
 
   <section class="section about">
     <h2>Contact / Commande</h2>
-    <form id="contact-form" action="https://formspree.io/f/TON_IDENTIFIANT" method="POST" class="contact">
+    <form id="contact-form" action="https://formspree.io/f/xvgqkvvl" method="POST" class="contact">
       <input type="text" name="name" placeholder="Ton nom" required />
       <input type="email" name="email" placeholder="Ton email" required />
       <textarea name="message" rows="4" placeholder="Ton message ou ta commande..."></textarea>
@@ -209,25 +210,26 @@
       }
     });
   </script>
+
   <script>
-  const toggleBtn = document.getElementById('theme-toggle');
+    const toggleBtn = document.getElementById('theme-toggle');
 
-  function updateIcon() {
-    if(document.body.classList.contains('light')) {
-      toggleBtn.textContent = '🌞'; // soleil pour mode clair
-    } else {
-      toggleBtn.textContent = '🌙'; // lune pour mode sombre
+    function updateIcon() {
+      if(document.body.classList.contains('light')) {
+        toggleBtn.textContent = '🌞'; // soleil pour mode clair
+      } else {
+        toggleBtn.textContent = '🌙'; // lune pour mode sombre
+      }
     }
-  }
 
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      updateIcon();
+    });
+
+    // Initialise l'icône au chargement
     updateIcon();
-  });
-
-  // Initialise l'icône au chargement
-  updateIcon();
-</script>
+  </script>
 
 </body>
 </html>
