@@ -10,9 +10,10 @@
 <body>
   <header>
     <h1>PokéBalls 3D</h1>
+         <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
 <nav>
-  <a href="index.html">Accueil</a> |
-  <a href="About.html" class="active">À propos</a>
+  <a href="site_pokeball_3_d.html">Accueil</a> |
+  <a href="about.html" class="active">À propos</a>
 </nav>
 
   </header>
@@ -21,7 +22,7 @@
     <h2>À propos</h2>
     <p>Nous sommes des passionnés de Pokémon et d'impression 3D. Chaque PokéBall est fabriquée à la main avec soin, en PLA biodégradable.</p>
     <p>Notre mission est de permettre à tous les fans de Pokémon de collectionner des PokéBalls uniques, personnalisées et respectueuses de l'environnement.</p>
-    <p> Pour toute question, n’hésitez pas à nous contacter via la page <a href="index.html#contact-form" class="contact-link">Contact</a> .
+    <p> Pour toute question, n’hésitez pas à nous contacter via la page <a href="site_pokeball_3_d.html#contact-form" class="contact-link">Contact</a> .
 </p>
 
   </main>
@@ -29,5 +30,26 @@
   <footer>
     &copy; 2025 PokéBalls 3D - Tous droits réservés
   </footer>
+
+    <script>
+  const toggleBtn = document.getElementById('theme-toggle');
+
+  function updateIcon() {
+    if(document.body.classList.contains('light')) {
+      toggleBtn.textContent = '🌞'; // soleil pour mode clair
+    } else {
+      toggleBtn.textContent = '🌙'; // lune pour mode sombre
+    }
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    updateIcon();
+  });
+
+  // Initialise l'icône au chargement
+  updateIcon();
+</script>
+
 </body>
 </html>
