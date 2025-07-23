@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PokéBalls 3D - Boutique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <button class="theme-toggle" onclick="document.body.classList.toggle('light')">Changer de thème</button>
+  <header>
+    <h1>PokéBalls 3D</h1>
+     <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
+<nav>
+  <a href="site_pokeball_3_d.html" class="active">Accueil</a> |
+  <a href="about.html">À propos</a>
+</nav>
+    <p>Collectionne-les toutes... en version imprimée 3D !</p>
+  </header>
+
+  <section class="section">
+    <h2>Nos PokéBalls</h2>
+    <div class="products-wrapper">
+      <button class="arrow left" onclick="scrollProducts(-1)" aria-label="Précédent">&#10094;</button>
+      <div class="products" id="products">
+        <div class="product" data-key="pokeball-classique">
+          <img src="images/pokeball-classique.jpg" alt="PokéBall Classique" />
+          <h3>PokéBall Classique</h3>
+          <p>La version emblématique. Diamètre : 7 cm. 12€</p>
+        </div>
+        <div class="product" data-key="superball">
+          <img src="superball.jpg" alt="Super Ball" />
+          <h3>Super Ball</h3>
+          <p>Design plus performant ! Diamètre : 7 cm. 14€</p>
+        </div>
+        <div class="product" data-key="ultraball">
+          <img src="ultraball.jpg" alt="Ultra Ball" />
+          <h3>Ultra Ball</h3>
+          <p>Pour les vrais dresseurs. Diamètre : 7 cm. 15€</p>
+        </div>
+        <div class="product" data-key="masterball">
+          <img src="masterball.jpg" alt="Master Ball" />
+          <h3>Master Ball</h3>
+          <p>Capture garantie. Diamètre : 7 cm. 18€</p>
+        </div>
+        <div class="product" data-key="lune-ball">
+          <img src="lune-ball.jpg" alt="Lune Ball" />
+          <h3>Lune Ball</h3>
+          <p>Pour Pokémon lunaires. Diamètre : 7 cm. 15€</p>
+        </div>
+      </div>
+      <button class="arrow right" onclick="scrollProducts(1)" aria-label="Suivant">&#10095;</button>
+    </div>
+  </section>
+
+  <section class="section custom">
+    <h2>Personnalisation</h2>
+    <p>Tu veux une PokéBall de ta couleur préférée ou avec ton pseudo ? C'est possible ! Contacte-nous pour une création unique.</p>
+  </section>
+
+  <section class="section about">
+    <h2>Contact / Commande</h2>
+    <form id="contact-form" action="https://formspree.io/f/TON_IDENTIFIANT" method="POST" class="contact">
+      <input type="text" name="name" placeholder="Ton nom" required />
+      <input type="email" name="email" placeholder="Ton email" required />
+      <textarea name="message" rows="4" placeholder="Ton message ou ta commande..."></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+    <p id="form-message" style="margin-top:1rem; color: var(--primary); display:none;"></p>
+  </section>
+
+  <footer>
+    &copy; 2025 PokéBalls 3D - Tous droits réservés
+  </footer>
+
+  <!-- Modal galerie -->
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption">
+    <div id="modal-content">
+      <button id="modal-close" aria-label="Fermer la galerie">&times;</button>
+      <img id="modal-img" src="" alt="" />
+      <div id="modal-caption"></div>
+      <div id="modal-nav">
+        <button id="modal-prev" aria-label="Image précédente">&#8592; Précédent</button>
+        <button id="modal-next" aria-label="Image suivante">Suivant &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function scrollProducts(direction) {
+      const container = document.getElementById('products');
+      const scrollAmount = 300;
+      container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    const galleryImages = {
+      "pokeball-classique": 
+      [
+         { src: "images/pokeball-classique.jpg", alt: "PokéBall Classique - vue principale" },
+         { src: "images/pokeball-classique-2.jpg", alt: "PokéBall Classique - vue de côté" },
+         { src: "images/pokeball-classique.jpg", alt: "PokéBall Classique - zoom" }
+        ],
+      "superball": [
+        { src: "superball.jpg", alt: "Super Ball - vue principale" },
+        { src: "superball-2.jpg", alt: "Super Ball - vue de côté" }
+      ],
+      "ultraball": [
+        { src: "ultraball.jpg", alt: "Ultra Ball - vue principale" },
+        { src: "ultraball-2.jpg", alt: "Ultra Ball - vue de côté" }
+      ],
+      "masterball": [
+        { src: "masterball.jpg", alt: "Master Ball - vue principale" },
+        { src: "masterball-2.jpg", alt: "Master Ball - vue de côté" }
+      ],
+      "lune-ball": [
+        { src: "lune-ball.jpg", alt: "Lune Ball - vue principale" },
+        { src: "lune-ball-2.jpg", alt: "Lune Ball - vue de côté" }
+      ]
+    };
+
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalCaption = document.getElementById('modal-caption');
+    const modalClose = document.getElementById('modal-close');
+    const modalPrev = document.getElementById('modal-prev');
+    const modalNext = document.getElementById('modal-next');
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    document.querySelectorAll('.product').forEach(product => {
+      product.addEventListener('click', () => {
+        const key = product.dataset.key;
+        if (!galleryImages[key]) return;
+        currentGallery = galleryImages[key];
+        currentIndex = 0;
+        openModal();
+      });
+    });
+
+    function openModal() {
+      updateModalImage();
+      modal.classList.add('visible');
+    }
+    function closeModal() {
+      modal.classList.remove('visible');
+    }
+    function updateModalImage() {
+      const imgData = currentGallery[currentIndex];
+      modalImg.src = imgData.src;
+      modalImg.alt = imgData.alt;
+      modalCaption.textContent = imgData.alt;
+    }
+    modalClose.addEventListener('click', closeModal);
+    modalPrev.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+      updateModalImage();
+    });
+    modalNext.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % currentGallery.length;
+      updateModalImage();
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    const form = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    function showMessage(text, color) {
+      formMessage.textContent = text;
+      formMessage.style.color = color;
+      formMessage.classList.add('visible');
+      formMessage.style.display = 'block';
+
+      setTimeout(() => {
+        formMessage.classList.remove('visible');
+        setTimeout(() => {
+          formMessage.style.display = 'none';
+        }, 500);
+      }, 5000);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      formMessage.style.display = 'none';
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        });
+        if (response.ok) {
+          showMessage('Merci pour votre message !', 'var(--primary)');
+          form.reset();
+        } else {
+          throw new Error('Erreur lors de l’envoi.');
+        }
+      } catch (error) {
+        showMessage('Oups, une erreur est survenue. Merci de réessayer.', 'red');
+      }
+    });
+  </script>
+  <script>
+  const toggleBtn = document.getElementById('theme-toggle');
+
+  function updateIcon() {
+    if(document.body.classList.contains('light')) {
+      toggleBtn.textContent = '🌞'; // soleil pour mode clair
+    } else {
+      toggleBtn.textContent = '🌙'; // lune pour mode sombre
+    }
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    updateIcon();
+  });
+
+  // Initialise l'icône au chargement
+  updateIcon();
+</script>
+
+</body>
+</html>
