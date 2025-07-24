@@ -27,7 +27,43 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  /* Scrollbar sombre */
+  scrollbar-color: #888 #1a1a1a;
+  scrollbar-width: thin;
 }
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background: #1a1a1a !important;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #888 !important;
+  border-radius: 10px;
+  border: 2px solid #1a1a1a !important;
+}
+
+/* Scrollbar en mode clair */
+body.light {
+  scrollbar-color: #aaa #f0f0f0;
+}
+
+body.light::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.light::-webkit-scrollbar-track {
+  background: #f0f0f0 !important;
+}
+
+body.light::-webkit-scrollbar-thumb {
+  background-color: #aaa !important;
+  border: 2px solid #f0f0f0 !important;
+}
+
+/* --- RESTE DE TON CSS EXISTANT --- */
+
 header {
   background: var(--card);
   color: var(--primary);
@@ -406,58 +442,44 @@ footer {
   background: #cc3235;
 }
 
-@media (max-width: 768px) {
-  header h1 {
-    flex-direction: column;
-    text-align: center;
-    font-size: 1.5rem;
-  }
+.products {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;       /* IMPORTANT : active la scrollbar horizontale */
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
 
-  nav {
-    text-align: center;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  /* Empêche les éléments de passer à la ligne */
+  flex-wrap: nowrap;      /* <- AJOUT */
 
-  .products-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .products {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-  }
-
-  .product {
-    min-width: 80%;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  form.contact input,
-  form.contact textarea,
-  form.contact button {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .social-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  footer {
-    text-align: center;
-    font-size: 0.9rem;
-  }
-
-  .modal-content {
-    width: 90%;
-    max-width: 350px;
-  }
+  /* Scrollbar personnalisée */
+  scrollbar-color: #000 #1e1e1e;
+  scrollbar-width: thin;
 }
 
+.products::-webkit-scrollbar {
+  height: 8px;            /* hauteur de la scrollbar horizontale */
+}
+
+.products::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.products::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 4px;
+}
+
+/* En mode clair */
+body.light .products {
+  scrollbar-color: #aaa #f0f0f0;
+}
+
+body.light .products::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+body.light .products::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border: 2px solid #f0f0f0;
+}
