@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PokéBalls 3D - Boutique</title>
-    <link rel="icon" href="images/icon-2.png" type="image/png" />
-
+  <link rel="icon" href="images/icon-2.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 </head>
 <body>
   <header>
@@ -28,6 +29,7 @@
   </svg>
   PokéBalls 3D
 </h1>
+
      <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
 <nav>
   <a href="index.html" class="active">Accueil</a> |
@@ -87,9 +89,30 @@
     <p id="form-message" style="margin-top:1rem; color: var(--primary); display:none;"></p>
   </section>
 
-  <footer>
-    &copy; 2025 PokéBalls 3D - Tous droits réservés
-  </footer>
+<footer>
+<div class="social-links">
+  <a href="#" id="discord-link" aria-label="Discord" role="button" aria-haspopup="dialog">
+    <i class="fab fa-discord"></i>
+  </a>
+  <!-- Ajoute d'autres liens réseaux sociaux ici -->
+  <a href="https://twitter.com/toncompte" target="_blank" aria-label="Twitter" rel="noopener noreferrer">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://facebook.com/toncompte" target="_blank" aria-label="Facebook" rel="noopener noreferrer">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+</div>
+
+<!-- Modal Discord -->
+<div id="discord-modal" role="dialog" aria-modal="true" aria-labelledby="discord-modal-title" aria-hidden="true" class="modal-hidden">
+  <div class="modal-content">
+    <h2 id="discord-modal-title">Mon pseudo Discord</h2>
+    <p><strong>xezy__</strong></p>
+    <button id="discord-close" aria-label="Fermer la fenêtre">Fermer</button>
+  </div>
+</div>
+  &copy; 2025 PokéBalls 3D - Tous droits réservés
+</footer>
 
   <!-- Modal galerie -->
   <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption">
@@ -246,6 +269,40 @@
   // Initialise l'icône au chargement
   updateIcon();
 </script>
+  <script>
+  // Ton script JS Discord modal ici
+  const discordLink = document.getElementById('discord-link');
+  const discordModal = document.getElementById('discord-modal');
+  const discordClose = document.getElementById('discord-close');
 
+  discordLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    discordModal.classList.add('visible');
+    discordModal.setAttribute('aria-hidden', 'false');
+    discordClose.focus();
+  });
+
+  discordClose.addEventListener('click', () => {
+    discordModal.classList.remove('visible');
+    discordModal.setAttribute('aria-hidden', 'true');
+    discordLink.focus();
+  });
+
+  discordModal.addEventListener('click', (e) => {
+    if (e.target === discordModal) {
+      discordModal.classList.remove('visible');
+      discordModal.setAttribute('aria-hidden', 'true');
+      discordLink.focus();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape" && discordModal.classList.contains('visible')) {
+      discordModal.classList.remove('visible');
+      discordModal.setAttribute('aria-hidden', 'true');
+      discordLink.focus();
+    }
+  });
+  </script>
 </body>
 </html>
