@@ -69,62 +69,27 @@
 </div>
   &copy; 2025 XezyBalls 3D - Tous droits réservés | N3D License.
 </footer>
+  <!-- Modales -->
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption">
+    <div id="modal-content">
+      <button id="modal-close" aria-label="Fermer la galerie">&times;</button>
+      <img id="modal-img" src="" alt="" />
+      <div id="modal-caption"></div>
+      <div id="modal-nav">
+        <button id="modal-prev">&#8592; Précédent</button>
+        <button id="modal-next">Suivant &#8594;</button>
+      </div>
+    </div>
+  </div>
 
-    <script>
-  const toggleBtn = document.getElementById('theme-toggle');
+  <div id="discord-modal" class="modal-hidden">
+    <div class="modal-content">
+      <h2>Mon pseudo Discord</h2>
+      <p><strong>xezy__</strong></p>
+      <button id="discord-close">Fermer</button>
+    </div>
+  </div>
 
-  function updateIcon() {
-    if(document.body.classList.contains('light')) {
-      toggleBtn.textContent = '🌞'; // soleil pour mode clair
-    } else {
-      toggleBtn.textContent = '🌙'; // lune pour mode sombre
-    }
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-    updateIcon();
-  });
-
-  // Initialise l'icône au chargement
-  updateIcon();
-</script>
-<script>
-  // Ton script JS Discord modal ici
-  const discordLink = document.getElementById('discord-link');
-  const discordModal = document.getElementById('discord-modal');
-  const discordClose = document.getElementById('discord-close');
-
-  discordLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    discordModal.classList.add('visible');
-    discordModal.setAttribute('aria-hidden', 'false');
-    discordClose.focus();
-  });
-
-  discordClose.addEventListener('click', () => {
-    discordModal.classList.remove('visible');
-    discordModal.setAttribute('aria-hidden', 'true');
-    discordLink.focus();
-  });
-
-  discordModal.addEventListener('click', (e) => {
-    if (e.target === discordModal) {
-      discordModal.classList.remove('visible');
-      discordModal.setAttribute('aria-hidden', 'true');
-      discordLink.focus();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape" && discordModal.classList.contains('visible')) {
-      discordModal.classList.remove('visible');
-      discordModal.setAttribute('aria-hidden', 'true');
-      discordLink.focus();
-    }
-  });
-  </script>
-</body>
-</html>
+  <script src="script.js"></script>
 </body>
 </html>
