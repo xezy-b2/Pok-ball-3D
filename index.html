@@ -6,35 +6,28 @@
   <title>XezyBalls 3D - Boutique</title>
   <link rel="icon" href="images/icon-2.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-<h1 style="flex: flex; align-items: center; gap: 8px;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-    <!-- Cercle extérieur -->
-    <circle cx="32" cy="32" r="30" fill="#fff" stroke="#000" stroke-width="4"/>
-    <!-- Ligne centrale (noire) -->
-    <path d="M2 32h60" stroke="#000" stroke-width="4"/>
-    <!-- Demi-haut rouge -->
-    <path d="M2 32 A30 30 0 0 1 62 32 L62 32 L2 32 Z" fill="#ff3b3f" stroke="none"/>
-    <!-- Cercle intérieur grand blanc -->
-    <circle cx="32" cy="32" r="14" fill="#fff" stroke="#000" stroke-width="4"/>
-    <!-- Cercle intérieur rouge -->
-    <circle cx="32" cy="32" r="10" fill="#ff3b3f" stroke="#000" stroke-width="4"/>
-    <!-- Petit cercle blanc central -->
-    <circle cx="32" cy="32" r="6" fill="#fff" stroke="#000" stroke-width="4"/>
-  </svg>
-  XezyBalls 3D
-</h1>
-
-     <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
-<nav>
-  <a href="index.html" class="active">Accueil</a> |
-  <a href="About.html">À propos</a>
-</nav>
+    <h1 style="flex: flex; align-items: center; gap: 8px;">
+      <!-- SVG logo -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#fff" stroke="#000" stroke-width="4"/>
+        <path d="M2 32h60" stroke="#000" stroke-width="4"/>
+        <path d="M2 32 A30 30 0 0 1 62 32 L62 32 L2 32 Z" fill="#ff3b3f" />
+        <circle cx="32" cy="32" r="14" fill="#fff" stroke="#000" stroke-width="4"/>
+        <circle cx="32" cy="32" r="10" fill="#ff3b3f" stroke="#000" stroke-width="4"/>
+        <circle cx="32" cy="32" r="6" fill="#fff" stroke="#000" stroke-width="4"/>
+      </svg>
+      XezyBalls 3D
+    </h1>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
+    <nav>
+      <a href="index.html" class="active">Accueil</a> |
+      <a href="About.html">À propos</a>
+    </nav>
     <p>Collectionne-les toutes... en version imprimée 3D !</p>
   </header>
 
@@ -43,6 +36,7 @@
     <div class="products-wrapper">
       <button class="arrow left" onclick="scrollProducts(-1)" aria-label="Précédent">&#10094;</button>
       <div class="products" id="products">
+        <!-- Produits ici -->
         <div class="product" data-key="pokeball-classique">
           <img src="images/pokeball-classiq.jpg" alt="PokéBall Classique" />
           <h3>PokéBall Classique</h3>
@@ -75,7 +69,7 @@
 
   <section class="section custom">
     <h2>Personnalisation</h2>
-    <p>Tu veux une PokéBall de ta couleur préférée ou avec ton pseudo ? C'est possible ! Contacte-nous pour une création unique.</p>
+    <p>Tu veux une PokéBall de ta couleur préférée ou avec ton pseudo ? C'est possible !</p>
   </section>
 
   <section class="section about">
@@ -89,220 +83,36 @@
     <p id="form-message" style="margin-top:1rem; color: var(--primary); display:none;"></p>
   </section>
 
-<footer>
-<div class="social-links">
-  <a href="#" id="discord-link" aria-label="Discord" role="button" aria-haspopup="dialog">
-    <i class="fab fa-discord"></i>
-  </a>
-  <!-- Ajoute d'autres liens réseaux sociaux ici -->
-  <a href="https://twitter.com/toncompte" target="_blank" aria-label="Twitter" rel="noopener noreferrer">
-    <i class="fab fa-twitter"></i>
-  </a>
-  <a href="https://facebook.com/toncompte" target="_blank" aria-label="Facebook" rel="noopener noreferrer">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-</div>
+  <footer>
+    <div class="social-links">
+      <a href="#" id="discord-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      <a href="https://twitter.com/toncompte" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://facebook.com/toncompte" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+    &copy; 2025 XezyBalls 3D - Tous droits réservés
+  </footer>
 
-<!-- Modal Discord -->
-<div id="discord-modal" role="dialog" aria-modal="true" aria-labelledby="discord-modal-title" aria-hidden="true" class="modal-hidden">
-  <div class="modal-content">
-    <h2 id="discord-modal-title">Mon pseudo Discord</h2>
-    <p><strong>xezy__</strong></p>
-    <button id="discord-close" aria-label="Fermer la fenêtre">Fermer</button>
-  </div>
-</div>
-  &copy; 2025 XezyBalls 3D - Tous droits réservés | N3D License.
-</footer>
-
-  <!-- Modal galerie -->
+  <!-- Modales -->
   <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption">
     <div id="modal-content">
       <button id="modal-close" aria-label="Fermer la galerie">&times;</button>
       <img id="modal-img" src="" alt="" />
       <div id="modal-caption"></div>
       <div id="modal-nav">
-        <button id="modal-prev" aria-label="Image précédente">&#8592; Précédent</button>
-        <button id="modal-next" aria-label="Image suivante">Suivant &#8594;</button>
+        <button id="modal-prev">&#8592; Précédent</button>
+        <button id="modal-next">Suivant &#8594;</button>
       </div>
     </div>
   </div>
 
-  <script>
-    function scrollProducts(direction) {
-      const container = document.getElementById('products');
-      const scrollAmount = 300;
-      container.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth'
-      });
-    }
+  <div id="discord-modal" class="modal-hidden">
+    <div class="modal-content">
+      <h2>Mon pseudo Discord</h2>
+      <p><strong>xezy__</strong></p>
+      <button id="discord-close">Fermer</button>
+    </div>
+  </div>
 
-    const galleryImages = {
-      "pokeball-classique": 
-      [
-         { src: "images/pokeball-classique.jpg", alt: "PokéBall Classique - vue principale" },
-         { src: "images/pokeball-classique-2.jpg", alt: "PokéBall Classique - vue de côté" },
-         { src: "images/pokeball-classique.jpg", alt: "PokéBall Classique - zoom" }
-        ],
-      "mimiqui": [
-         { src: "images/mimqui1.png", alt: "mimiqui - vue principale" },
-         { src: "images/mimiqui2.png", alt: "mimiqui - vue de côté" },
-         { src: "images/mimiqui3.png", alt: "mimiqui - vue de derrière" }
-      ],
-      "ultraball": [
-        { src: "ultraball.jpg", alt: "Ultra Ball - vue principale" },
-        { src: "ultraball-2.jpg", alt: "Ultra Ball - vue de côté" }
-      ],
-      "masterball": [
-        { src: "masterball.jpg", alt: "Master Ball - vue principale" },
-        { src: "masterball-2.jpg", alt: "Master Ball - vue de côté" }
-      ],
-      "lune-ball": [
-        { src: "lune-ball.jpg", alt: "Lune Ball - vue principale" },
-        { src: "lune-ball-2.jpg", alt: "Lune Ball - vue de côté" }
-      ]
-    };
-
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modal-img');
-    const modalCaption = document.getElementById('modal-caption');
-    const modalClose = document.getElementById('modal-close');
-    const modalPrev = document.getElementById('modal-prev');
-    const modalNext = document.getElementById('modal-next');
-
-    let currentGallery = [];
-    let currentIndex = 0;
-
-    document.querySelectorAll('.product').forEach(product => {
-      product.addEventListener('click', () => {
-        const key = product.dataset.key;
-        if (!galleryImages[key]) return;
-        currentGallery = galleryImages[key];
-        currentIndex = 0;
-        openModal();
-      });
-    });
-
-    function openModal() {
-      updateModalImage();
-      modal.classList.add('visible');
-    }
-    function closeModal() {
-      modal.classList.remove('visible');
-    }
-    function updateModalImage() {
-      const imgData = currentGallery[currentIndex];
-      modalImg.src = imgData.src;
-      modalImg.alt = imgData.alt;
-      modalCaption.textContent = imgData.alt;
-    }
-    modalClose.addEventListener('click', closeModal);
-    modalPrev.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-      updateModalImage();
-    });
-    modalNext.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % currentGallery.length;
-      updateModalImage();
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    const form = document.getElementById('contact-form');
-    const formMessage = document.getElementById('form-message');
-
-    function showMessage(text, color) {
-      formMessage.textContent = text;
-      formMessage.style.color = color;
-      formMessage.classList.add('visible');
-      formMessage.style.display = 'block';
-
-      setTimeout(() => {
-        formMessage.classList.remove('visible');
-        setTimeout(() => {
-          formMessage.style.display = 'none';
-        }, 500);
-      }, 5000);
-    }
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      formMessage.style.display = 'none';
-      const formData = new FormData(form);
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          headers: {
-            'Accept': 'application/json'
-          },
-          body: formData
-        });
-        if (response.ok) {
-          showMessage('Merci pour votre message !', 'var(--primary)');
-          form.reset();
-        } else {
-          throw new Error('Erreur lors de l’envoi.');
-        }
-      } catch (error) {
-        showMessage('Oups, une erreur est survenue. Merci de réessayer.', 'red');
-      }
-    });
-  </script>
-  <script>
-  const toggleBtn = document.getElementById('theme-toggle');
-
-  function updateIcon() {
-    if(document.body.classList.contains('light')) {
-      toggleBtn.textContent = '🌞'; // soleil pour mode clair
-    } else {
-      toggleBtn.textContent = '🌙'; // lune pour mode sombre
-    }
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-    updateIcon();
-  });
-
-  // Initialise l'icône au chargement
-  updateIcon();
-</script>
-  <script>
-  // Ton script JS Discord modal ici
-  const discordLink = document.getElementById('discord-link');
-  const discordModal = document.getElementById('discord-modal');
-  const discordClose = document.getElementById('discord-close');
-
-  discordLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    discordModal.classList.add('visible');
-    discordModal.setAttribute('aria-hidden', 'false');
-    discordClose.focus();
-  });
-
-  discordClose.addEventListener('click', () => {
-    discordModal.classList.remove('visible');
-    discordModal.setAttribute('aria-hidden', 'true');
-    discordLink.focus();
-  });
-
-  discordModal.addEventListener('click', (e) => {
-    if (e.target === discordModal) {
-      discordModal.classList.remove('visible');
-      discordModal.setAttribute('aria-hidden', 'true');
-      discordLink.focus();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape" && discordModal.classList.contains('visible')) {
-      discordModal.classList.remove('visible');
-      discordModal.setAttribute('aria-hidden', 'true');
-      discordLink.focus();
-    }
-  });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
