@@ -4,17 +4,17 @@ function scrollProducts(direction) {
 }
 
 const galleryImages = {
-  "pokeball-classique": [
+  "gengar_ball": [
     { src: "images/pokeball-classique.jpg", alt: "PokéBall Classique - vue principale" },
     { src: "images/pokeball-classique-2.jpg", alt: "PokéBall Classique - vue de côté" },
     { src: "images/pokeball-classique.jpg", alt: "PokéBall Classique - zoom" }
   ],
-  "mimiqui": [
+  "Psykokwak_ball": [
     { src: "images/mimqui1.png", alt: "mimiqui - vue principale" },
     { src: "images/mimiqui2.png", alt: "mimiqui - vue de côté" },
     { src: "images/mimiqui3.png", alt: "mimiqui - vue de derrière" }
   ],
-  "ultraball": [
+  "pikachu_ball": [
     { src: "ultraball.jpg", alt: "Ultra Ball - vue principale" },
     { src: "ultraball-2.jpg", alt: "Ultra Ball - vue de côté" }
   ],
