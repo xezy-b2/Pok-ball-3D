@@ -3,56 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pokéball 3D - Accueil</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>XezyBalls 3D - Boutique</title>
+  <link rel="icon" href="images/icon-2.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Pokéballs 3D</h1>
+    <h1 style="flex: flex; align-items: center; gap: 8px;">
+      <!-- SVG logo -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#fff" stroke="#000" stroke-width="4"/>
+        <path d="M2 32h60" stroke="#000" stroke-width="4"/>
+        <path d="M2 32 A30 30 0 0 1 62 32 L62 32 L2 32 Z" fill="#ff3b3f" />
+        <circle cx="32" cy="32" r="14" fill="#fff" stroke="#000" stroke-width="4"/>
+        <circle cx="32" cy="32" r="10" fill="#ff3b3f" stroke="#000" stroke-width="4"/>
+        <circle cx="32" cy="32" r="6" fill="#fff" stroke="#000" stroke-width="4"/>
+      </svg>
+      XezyBalls 3D
+    </h1>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
     <nav>
-      <a href="index.html">Accueil</a>
-      <a href="about.html">À propos</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html" class="active">Accueil</a> |
+      <a href="About.html">À propos</a>
     </nav>
-    <button id="theme-toggle">🌙</button>
+    <p>Collectionne-les toutes... en version imprimée 3D !</p>
   </header>
 
-<main>
-  <h2>Nos Pokéballs 3D</h2>
-  <div class="classic-gallery">
-    <div class="gallery-item">
-      <img src="img/psykokwak_ball.png" alt="Psykokwak Ball" />
-      <p>Psykokwak Ball</p>
-      <a href="#" class="btn-buy">Acheter</a>
+  <section class="section">
+    <h2>Nos PokéBalls</h2>
+    <div class="products-wrapper">
+      <button class="arrow left" onclick="scrollProducts(-1)" aria-label="Précédent">&#10094;</button>
+      <div class="products" id="products">
+        <!-- Produits ici -->
+        <div class="product" data-key="pokeball-classique">
+          <img src="images/pikachu_ball.png" alt="PokéBall Classique" />
+          <h3>Pikachu</h3>
+          <p>La version emblématique de Pokémon.</p>
+        </div>
+        <div class="product" data-key="mimiqui">
+          <img src="images/mimqui1.png" alt="mimiqui" />
+          <h3>mimiqui</h3>
+          <p>Design plus performant ! Diamètre : 7 cm. 10€</p>
+        </div>
+        <div class="product" data-key="ultraball">
+          <img src="images/gengar_ball.png" alt="Gengar" />
+          <h3>Ectoplasma</h3>
+          <p>Pour les vrais passionnés de ce Pokémon.</p>
+        </div>
+        <div class="product" data-key="masterball">
+          <img src="images/Psykokwak_ball.png" alt="Master Ball" />
+          <h3>Psykokwak et sa Pokéball</h3>
+          <p>Un peu de bonne humeur avec ce pokémon !</p>
+        </div>
+        <div class="product" data-key="lune-ball">
+          <img src="lune-ball.jpg" alt="Lune Ball" />
+          <h3>Lune Ball</h3>
+          <p>Pour Pokémon lunaires. Diamètre : 7 cm. 15€</p>
+        </div>
+      </div>
+      <button class="arrow right" onclick="scrollProducts(1)" aria-label="Suivant">&#10095;</button>
     </div>
-    <div class="gallery-item">
-      <img src="img/masterball.png" alt="Masterball" />
-      <p>Masterball</p>
-      <a href="#" class="btn-buy">Acheter</a>
-    </div>
-    <div class="gallery-item">
-      <img src="img/ultraball.png" alt="Ultraball" />
-      <p>Ultraball</p>
-      <a href="#" class="btn-buy">Acheter</a>
-    </div>
-    <div class="gallery-item">
-      <img src="img/greatball.png" alt="Greatball" />
-      <p>Greatball</p>
-      <a href="#" class="btn-buy">Acheter</a>
-    </div>
-  </div>
-</main>
+  </section>
 
+  <section class="section custom">
+    <h2>Personnalisation</h2>
+    <p>Tu veux une PokéBall de ta couleur préférée ou avec ton pseudo ? C'est possible !</p>
+  </section>
+
+  <section class="section about">
+    <h2>Contact / Commande</h2>
+    <form id="contact-form" action="https://formspree.io/f/xvgqkvvl" method="POST" class="contact">
+      <input type="text" name="name" placeholder="Ton nom" required />
+      <input type="email" name="email" placeholder="Ton email" required />
+      <textarea name="message" rows="4" placeholder="Ton message ou ta commande..."></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+    <p id="form-message" style="margin-top:1rem; color: var(--primary); display:none;"></p>
+  </section>
 
   <footer>
-    <p>&copy; 2025 Pokéballs 3D</p>
+    <div class="social-links">
+      <a href="#" id="discord-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      <a href="https://twitter.com/toncompte" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://facebook.com/toncompte" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+    &copy; 2025 XezyBalls 3D - Tous droits réservés
   </footer>
 
-  <!-- Modale zoom -->
-  <div id="modal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modal-img">
-    <div id="caption"></div>
+  <!-- Modales -->
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption">
+    <div id="modal-content">
+      <button id="modal-close" aria-label="Fermer la galerie">&times;</button>
+      <img id="modal-img" src="" alt="" />
+      <div id="modal-caption"></div>
+      <div id="modal-nav">
+        <button id="modal-prev">&#8592; Précédent</button>
+        <button id="modal-next">Suivant &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="discord-modal" class="modal-hidden">
+    <div class="modal-content">
+      <h2>Mon pseudo Discord</h2>
+      <p><strong>xezy__</strong></p>
+      <button id="discord-close">Fermer</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
